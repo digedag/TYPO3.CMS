@@ -52,7 +52,7 @@ class ProductionExceptionHandler extends AbstractExceptionHandler {
 	 * @param \Exception $exception The exception
 	 * @return void
 	 */
-	public function echoExceptionWeb(\Exception $exception) {
+	public function echoExceptionWeb($exception) {
 		$this->sendStatusHeaders($exception);
 		$this->writeLogEntries($exception, self::CONTEXT_WEB);
 		$messageObj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
@@ -69,7 +69,7 @@ class ProductionExceptionHandler extends AbstractExceptionHandler {
 	 * @param \Exception $exception The exception
 	 * @return void
 	 */
-	public function echoExceptionCLI(\Exception $exception) {
+	public function echoExceptionCLI($exception) {
 		$filePathAndName = $exception->getFile();
 		$exceptionCodeNumber = $exception->getCode() > 0 ? '#' . $exception->getCode() . ': ' : '';
 		$this->writeLogEntries($exception, self::CONTEXT_CLI);
@@ -88,7 +88,7 @@ Uncaught TYPO3 Exception ' . $exceptionCodeNumber . $exception->getMessage() . L
 	 * @param \Exception $exception The exception
 	 * @return boolean
 	 */
-	protected function discloseExceptionInformation(\Exception $exception) {
+	protected function discloseExceptionInformation($exception) {
 		// Allow message to be shown in production mode if the exception is about
 		// trusted host configuration.  By doing so we do not disclose
 		// any valuable information to an attacker but avoid confusions among TYPO3 admins
@@ -113,7 +113,7 @@ Uncaught TYPO3 Exception ' . $exceptionCodeNumber . $exception->getMessage() . L
 	 * @param \Exception $exception Exception causing the error
 	 * @return string
 	 */
-	protected function getTitle(\Exception $exception) {
+	protected function getTitle($exception) {
 		if ($this->discloseExceptionInformation($exception) && method_exists($exception, 'getTitle') && $exception->getTitle() !== '') {
 			return htmlspecialchars($exception->getTitle());
 		} else {
@@ -127,7 +127,7 @@ Uncaught TYPO3 Exception ' . $exceptionCodeNumber . $exception->getMessage() . L
 	 * @param \Exception $exception Exception causing the error
 	 * @return string
 	 */
-	protected function getMessage(\Exception $exception) {
+	protected function getMessage($exception) {
 		if ($this->discloseExceptionInformation($exception)) {
 			// Exception has an error code given
 			if ($exception->getCode() > 0) {

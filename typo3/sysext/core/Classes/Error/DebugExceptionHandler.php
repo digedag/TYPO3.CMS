@@ -40,7 +40,7 @@ class DebugExceptionHandler extends \TYPO3\CMS\Core\Error\AbstractExceptionHandl
 	 * @return void
 	 * @author Robert Lemke <robert@typo3.org>
 	 */
-	public function echoExceptionWeb(\Exception $exception) {
+	public function echoExceptionWeb($exception) {
 		$this->sendStatusHeaders($exception);
 		$filePathAndName = $exception->getFile();
 		$exceptionCodeNumber = $exception->getCode() > 0 ? '#' . $exception->getCode() . ': ' : '';
@@ -118,7 +118,7 @@ class DebugExceptionHandler extends \TYPO3\CMS\Core\Error\AbstractExceptionHandl
 	 * @return void
 	 * @author Robert Lemke <robert@typo3.org>
 	 */
-	public function echoExceptionCLI(\Exception $exception) {
+	public function echoExceptionCLI($exception) {
 		$filePathAndName = $exception->getFile();
 		$exceptionCodeNumber = $exception->getCode() > 0 ? '#' . $exception->getCode() . ': ' : '';
 		$this->writeLogEntries($exception, self::CONTEXT_CLI);

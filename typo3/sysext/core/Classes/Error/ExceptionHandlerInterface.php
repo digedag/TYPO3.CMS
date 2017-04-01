@@ -33,7 +33,7 @@ interface ExceptionHandlerInterface
 	 * @param \Exception $exception: The exception object
 	 * @return void
 	 */
-	public function handleException(\Exception $exception);
+	public function handleException($exception);
 
 	/**
 	 * Formats and echoes the exception as XHTML.
@@ -41,7 +41,7 @@ interface ExceptionHandlerInterface
 	 * @param \Exception $exception The exception object
 	 * @return void
 	 */
-	public function echoExceptionWeb(\Exception $exception);
+	public function echoExceptionWeb($exception);
 
 	/**
 	 * Formats and echoes the exception for the command line
@@ -49,6 +49,6 @@ interface ExceptionHandlerInterface
 	 * @param \Exception $exception The exception object
 	 * @return void
 	 */
-	public function echoExceptionCLI(\Exception $exception);
+	public function echoExceptionCLI($exception);
 
 }

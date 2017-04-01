@@ -35,7 +35,7 @@ abstract class AbstractExceptionHandler implements ExceptionHandlerInterface, \T
 	 * @param \Exception $exception The exception object
 	 * @return void
 	 */
-	public function handleException(\Exception $exception) {
+	public function handleException($exception) {
 		switch (PHP_SAPI) {
 			case 'cli':
 				$this->echoExceptionCLI($exception);
@@ -53,7 +53,7 @@ abstract class AbstractExceptionHandler implements ExceptionHandlerInterface, \T
 	 * @return void
 	 * @see \TYPO3\CMS\Core\Utility\GeneralUtility::sysLog(), \TYPO3\CMS\Core\Utility\GeneralUtility::devLog()
 	 */
-	protected function writeLogEntries(\Exception $exception, $context) {
+	protected function writeLogEntries($exception, $context) {
 		// Do not write any logs for this message to avoid filling up tables or files with illegal requests
 		if ($exception->getCode() === 1396795884) {
 			return;
@@ -130,7 +130,7 @@ abstract class AbstractExceptionHandler implements ExceptionHandlerInterface, \T
 	 * @param \Exception $exception
 	 * @return void
 	 */
-	protected function sendStatusHeaders(\Exception $exception) {
+	protected function sendStatusHeaders($exception) {
 		if (method_exists($exception, 'getStatusHeaders')) {
 			$headers = $exception->getStatusHeaders();
 		} else {
