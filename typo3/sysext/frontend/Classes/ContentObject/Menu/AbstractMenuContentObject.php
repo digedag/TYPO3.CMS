@@ -301,6 +301,7 @@ class AbstractMenuContentObject {
 			// (List is specific for this rootline, so it may be supplied from parent menus for speed...)
 			if (!is_array($this->rL_uidRegister)) {
 				$rl_MParray = array();
+				$this->rL_uidRegister = [];
 				foreach ($this->tmpl->rootLine as $v_rl) {
 					// For overlaid mount points, set the variable right now:
 					if ($v_rl['_MP_PARAM'] && $v_rl['_MOUNT_OL']) {
