@@ -334,7 +334,7 @@ class RteHtmlAreaBase extends \TYPO3\CMS\Backend\Rte\AbstractRte {
 	 * @return string HTML code for RTE!
 	 * @todo Define visibility
 	 */
-	public function drawRTE($parentObject, $table, $field, $row, $PA, $specConf, $thisConfig, $RTEtypeVal, $RTErelPath, $thePidValue) {
+	public function drawRTE(&$parentObject, $table, $field, $row, $PA, $specConf, $thisConfig, $RTEtypeVal, $RTErelPath, $thePidValue) {
 		global $LANG, $TYPO3_DB;
 		$this->TCEform = $parentObject;
 		$inline = $this->TCEform->inline;
